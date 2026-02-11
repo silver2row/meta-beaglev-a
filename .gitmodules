@@ -1,0 +1,3 @@
+[submodule "openembedded-core"]
+	path = openembedded-core
+	url = https://github.com/silver2row/openembedded-core.git

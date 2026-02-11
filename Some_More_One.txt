@@ -1,0 +1,23 @@
+# From docs.yoctoproject.org
+
+```
+Target Machine Selection: Controlled by the MACHINE variable.
+
+Download Directory: Controlled by the DL_DIR variable.
+
+Shared State Directory: Controlled by the SSTATE_DIR variable.
+
+Persistent Data Directory: Controlled by the PERSISTENT_DIR variable.
+
+Build Output: Controlled by the TMPDIR variable.
+
+Distribution Policy: Controlled by the DISTRO variable.
+
+Packaging Format: Controlled by the PACKAGE_CLASSES variable.
+
+SDK Target Architecture: Controlled by the SDKMACHINE variable.
+
+Extra Image Packages: Controlled by the EXTRA_IMAGE_FEATURES variable.
+```
+
+
