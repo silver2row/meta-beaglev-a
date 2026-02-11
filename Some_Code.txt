@@ -1,0 +1,44 @@
+#@TYPE: Machine
+#@NAME: beaglev-ahead
+#@SOC: Xuantie C910
+#@DESCRIPTION: Machine configuration for the Beagle-V Ahead board
+
+require include/c910.inc
+
+# Extend the list from riscv-common.inc
+MACHINE_FEATURES += "usb wifi bluetooth"
+
+#============================================
+# SBI Configuration
+#RISCV_SBI_FDT ?= "th1520-beaglev-ahead.dtb"
+unset RISCV_SBI_PAYLOAD
+#============================================
+
+#============================================
+# Kernel Configuration
+KERNEL_DEVICETREE ?= "thead/th1520-beaglev-ahead.dtb"
+KERNEL_IMAGETYPE = "Image"
+#============================================
+
+#============================================
+# Uboot Configuration
+UBOOT_MACHINE = "light_beagle_defconfig"
+UBOOT_DTB_BINARY = "th1520-beaglev-ahead.dtb"
+#============================================
+
+#============================================
+# Image Configuration
+# Note: currently just a fastboot deployment is supported
+#       for which a separate boot.ext4 is generated
+IMAGE_BOOT_FILES:remove = "boot.scr.uimg"
+IMAGE_BOOT_FILES:append = "fw_payload.bin th1520-beaglev-ahead.dtb extlinux_sd.conf;extlinux/extlinux.conf"
+WKS_FILE ?= "beaglev-ahead.wks"
+#============================================
+
+#============================================
+# Common Preferred Providers
+PREFERRED_PROVIDER_virtual/kernel ?= "linux-beaglev-dev"
+PREFERRED_PROVIDER_virtual/bootloader ?= "u-boot-beaglev-ahead"
+PREFERRED_PROVIDER_opensbi ?= "opensbi-revyos"
+EXTRA_IMAGEDEPENDS += "u-boot-beaglev-ahead firmware-th1520"
+#============================================
